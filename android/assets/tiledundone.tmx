@@ -14,7 +14,7 @@
  <objectgroup name="bricks"/>
  <layer name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt0wEJAAAIwDDtX1qwhIobPMIjAAAAAAAAAAAAAH5JdXDR9DdbgosK1FYAhQ==
+   eJztWMFOxCAQpetJo2uqp157Mho16bp60D/x6j+oH6L+ifp5QlLiZDIUBga6VV7yst0WhjdTHrCrVEVFRYUfbyul3jU/VvIxpeJKa5TWFzN26rilc4jRnUtjjjk7J1Ly+dR9vjS/HX3hOwgdw8aciiupMTZeTMzUuTOVC6fWkjUOySlGt5TGM4aWJYKTTxcZW9KP0nDNn5WHEPD+VI18tebWl4pdutapfuDq7keGAvu3ojxynnmWsMZQcK0l9lk3ciHpBKFXMv49BKzIj7925qngo1dy/j3SXGseC+jKjZNmbgUVFWnA3v0v/m21dwfNU6aH8e8wex6Dn9LY1xoPEtaaRwENEvnZvnjddP027gKucexQHaHte8d1jn7wf4IQfZR3XWNRexX2rzkzXwLu6hnaeHcDyPWwD9x93efPc/3sYuI5x99znznahJqX1o794PIH1hXbL0ZbiH9dNcf+NfvunubVeL12jD3nHMLeHYQ9jGsV4i2fP1OfQ20xZw4ptKDeN0wdKb6PAeUH6l6LcuH046y7sO2Ud7F/bd2oeU751/Bauf1b+j3gseH82TTh+/BWP7sFvCPaUvOT8tYWxaDa3OvvDyM5/n3Wny+Ar82vNl+uWFcKYL1MPDy+SwdVZ67vU/PAfrBa8H3rXavL5SOq3wDeq8nHp9m29XkXrxHQu9jDT2gMs/di/0I9KeuvBJpKklL1qbXOU9clsATmznFXKVWfWus8dV0CS+AHMrKBpg==
   </data>
  </layer>
 </map>
