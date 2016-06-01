@@ -11,6 +11,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -18,6 +22,7 @@ import com.valtterilaine.mariobros.MarioBros;
 import com.valtterilaine.mariobros.Scenes.HUD;
 import com.valtterilaine.mariobros.Sprites.Mario;
 import com.valtterilaine.mariobros.Tools.B2WorldCreator;
+import com.valtterilaine.mariobros.Tools.WorldContactListener;
 
 /**
  * Created by Oasis3 on 29.5.2016.
@@ -58,10 +63,12 @@ public class PlayScreen implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
+        new B2WorldCreator(world, map);
+
 
         player = new Mario(this);
 
-        new B2WorldCreator(world, map);
+        world.setContactListener(new WorldContactListener());
     }
 
     public TextureAtlas getAtlas() {
