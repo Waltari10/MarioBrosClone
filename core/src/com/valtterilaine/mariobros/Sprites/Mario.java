@@ -41,7 +41,7 @@ public class Mario extends Sprite {
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         for (int i = 1; i < 4; i++) {
-            frames.add(new TextureRegion(getTexture(), 384 + (i * 16), 0, 16, 16)); //+ 384?
+            frames.add(new TextureRegion(getTexture(), 384 + (i * 16), 0, 16, 16));
         }
         marioRun = new Animation(0.1f, frames);
         frames.clear();
@@ -54,7 +54,7 @@ public class Mario extends Sprite {
         marioStand = new TextureRegion(getTexture(), 384, 0, 16, 16);
 
         defineMario();
-        setBounds(384,0,16 / MarioBros.PPM, 16 / MarioBros.PPM); //Should the first zero be 384?
+        setBounds(384,0,16 / MarioBros.PPM, 16 / MarioBros.PPM);
         setRegion(marioStand);
     }
 
@@ -115,6 +115,8 @@ public class Mario extends Sprite {
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
         shape.setRadius(7 / MarioBros.PPM);
+        fdef.filter.categoryBits = MarioBros.MARIO_BIT;
+        fdef.filter.maskBits = MarioBros.GROUND_BIT | MarioBros.COIN_BIT | MarioBros.BRICK_BIT | MarioBros.ENEMY_BIT | MarioBros.OBJECT_BIT | MarioBros.ENEMY_HEAD_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);

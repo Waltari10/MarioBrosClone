@@ -3,6 +3,7 @@ package com.valtterilaine.mariobros.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,15 +12,12 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.valtterilaine.mariobros.MarioBros;
 import com.valtterilaine.mariobros.Scenes.HUD;
+import com.valtterilaine.mariobros.Sprites.Goomba;
 import com.valtterilaine.mariobros.Sprites.Mario;
 import com.valtterilaine.mariobros.Tools.B2WorldCreator;
 import com.valtterilaine.mariobros.Tools.WorldContactListener;
@@ -44,6 +42,9 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer b2dr;
 
     private Mario player;
+    private Goomba goomba;
+
+    private Music music;
 
     public PlayScreen (MarioBros game) {
         atlas = new TextureAtlas("Mario_and_enemies.txt");
@@ -62,13 +63,20 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -10 ), true);
         b2dr = new Box2DDebugRenderer();
 
-
-        new B2WorldCreator(world, map);
-
-
+        new B2WorldCreator(this);
         player = new Mario(this);
 
         world.setContactListener(new WorldContactListener());
+
+        music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
+        music.setLooping(true);
+        music.play();
+
+        goomba = new Goomba(this, .64f, .32f);
+    }
+
+    public TiledMap getMap() {
+        return map;
     }
 
     public TextureAtlas getAtlas() {
@@ -89,6 +97,8 @@ public class PlayScreen implements Screen {
     public void update (float dt) {
         handleInput(dt);
         player.update(dt);
+        goomba.update(dt);
+        hud.update(dt);
 
         world.step(1/60f, 6, 2); //60 frames per second
 
@@ -121,6 +131,9 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gameCam.combined);
         game.batch.begin();
         player.draw(game.batch);
+        goomba.draw(game.batch);
+
+
         game.batch.end();
 
 

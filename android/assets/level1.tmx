@@ -106,7 +106,6 @@
   <object id="106" x="2688" y="112" width="16" height="16"/>
   <object id="107" x="2704" y="112" width="16" height="16"/>
   <object id="109" x="2736" y="112" width="16" height="16"/>
-  <object id="114" x="400" y="112" width="16" height="16"/>
   <object id="169" x="3136" y="160" width="16" height="16"/>
  </objectgroup>
  <layer name="graphics" width="240" height="13">
